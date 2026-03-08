@@ -158,7 +158,7 @@ The Oracle E-Business Suite Technology Stack consists of:
 Layer	                         Technology
 Database Layer	             Oracle Database
 Application UI	              Oracle Forms
-Reporting	Oracle                Reports
+Reporting	                   Oracle Reports
 Web Access	           Apache / Oracle HTTP Server
 
 All these technologies work together to run Oracle E-Business Suite.
