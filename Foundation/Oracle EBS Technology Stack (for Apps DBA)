@@ -1,0 +1,164 @@
+The Oracle E-Business Suite (EBS) Technology Stack mainly consists of two layers:
+
+1️⃣ Database Layer
+2️⃣ Application Layer
+
+1️⃣ Database Layer
+This layer contains the actual application data.
+
+Technology Used        ->  Oracle Database
+Role of the Database   ->  The database stores all EBS system data, such as:
+                           Users, Transactions, Financial Data
+                           HR Data, Inventory, Orders
+
+Each EBS module stores its data in the Oracle Database.
+
+Example
+If a user performs the action:                     Create Purchase Order
+The application will execute something like:      INSERT INTO po_headers_all
+
+The data is then stored inside the Oracle Database.
+
+##############################################
+#            Role of the Apps DBA            #
+##############################################
+What is the Apps DBA Responsible For?
+The Apps DBA manages the entire EBS Technology Stack.
+->Database Responsibilities
+* Backup
+* Recovery
+* Performance tuning
+* Database patching
+
+->Application Responsibilities
+* Forms compilation
+* Reports deployment
+* Apache configuration
+* Concurrent Manager management
+* Applying patches using ADOP
+
+2️⃣ Application Layer
+This layer contains the software components that users interact with.
+
+It includes several technologies:
+* Oracle Forms
+* Oracle Reports
+* Apache Web Server
+* Concurrent Processing
+* Java / OA Framework
+
+###########################################Oracle Forms###########################################
+Oracle Forms is responsible for the application screens (UI) that users interact with.
+Examples:
+Create Invoice
+Create Purchase Order
+Employee Form
+All these screens are Forms.
+
+***Forms Files in EBS***
+Type        	Meaning
+FMB	      Form Source File
+FMX	      Form Executable
+
+FMB → Compile → FMX
+The FMB file is compiled into FMX.
+The FMX file is the one actually executed by the user.
+
+Example
+When a user opens the screen:
+Purchase Order Form
+The system actually runs the FMX file.
+
+###########################################Oracle Reports###########################################
+What is Oracle Reports?
+Oracle Reports is used to generate reports in EBS.
+
+Examples include:
+* Financial Reports
+* Inventory Reports
+* HR Reports
+* Trial Balance
+
+***Report Files***
+Type	           Meaning
+RDF	          Report Source
+REP        	Executable Report
+
+The source file is compiled:  RDF → Compile → REP
+The REP file is the executable report.
+
+###########################################Apache Web Server###########################################
+EBS uses Apache HTTP Server as the web entry point.
+
+In Oracle EBS it is called:
+Oracle HTTP Server (OHS)
+It is basically Oracle’s distribution of Apache.
+
+What Does It Do?
+When a user opens -> http://ebs.company.com
+The Apache / OHS server:
+
+1️⃣ Receives the request
+2️⃣ Sends it to the Application Server
+3️⃣ Returns the EBS page to the user
+
+############################Architecture Flow (How the System Works)################################
+Step 1
+User opens  ->   http://ebs.company.com
+Step 2
+The request reaches: Apache / Oracle HTTP Server
+Step 3
+The server displays the Login Page.
+Step 4
+The user logs in.
+Step 5
+The user opens a screen such as:
+Create Invoice
+Step 6
+The system runs:
+Oracle Forms
+Step 7
+The Form connects to:
+Oracle Database
+Step 8
+The data is stored in the database tables.
+
+######################Simple Architecture Diagram######################
+User Browser
+     |
+     v
+Apache / OHS
+     |
+     v
+Application Server
+ (Forms / Reports)
+     |
+     v
+Oracle Database
+
+
+
+###################Real Troubleshooting Example (Apps DBA)###################
+
+If a user reports:
+"Form is not opening"
+
+The Apps DBA investigates:
+1️⃣ Is Apache running?
+adapcctl.sh status
+
+2️⃣ Is the Forms Server running?
+3️⃣ Does the FMX file exist?
+4️⃣ Is the database connection working properly?
+
+
+
+The Oracle E-Business Suite Technology Stack consists of:
+
+Layer	                         Technology
+Database Layer	             Oracle Database
+Application UI	              Oracle Forms
+Reporting	Oracle                Reports
+Web Access	           Apache / Oracle HTTP Server
+
+All these technologies work together to run Oracle E-Business Suite.
