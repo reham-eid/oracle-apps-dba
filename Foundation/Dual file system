@@ -1,0 +1,23 @@
+Dual file system: Run FS vs Patch FS (R12.2)
+
+- Run File System (FS1) → Active (Production)
+- Patch File System (FS2) → Inactive (Used for patching)
+
+Both are synchronized during Prepare phase.
+
+Online Patching Cycle:
+1. Prepare → Synchronize Patch FS with Run FS
+2. Apply → Apply patches on Patch FS
+3. Finalize → Compile and prepare system for cutover
+4. Cutover → Switch Run FS and Patch FS + switch DB edition
+5. Cleanup → Remove old editions and unused objects
+
+Key Components:
+- Edition-Based Redefinition (EBR):
+  Enables multiple versions of objects in the same database (old & new editions)
+
+- ADOP:
+  Manages the entire online patching cycle
+
+- Database Editions:
+  Multiple logical versions inside the same database (not multiple databases)
