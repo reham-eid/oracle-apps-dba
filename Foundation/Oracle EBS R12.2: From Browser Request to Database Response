@@ -1,0 +1,44 @@
+Oracle EBS R12.2: From Browser Request to Database Response
+
+Browser
+  ↓
+OHS (Web Entry Point)
+  ↓
+WebLogic
+  ├── oacore (OAF)
+  ├── oafm (Services)
+  ├── Forms Server
+  ↓
+Database (EBR + TNS)
+
+- The Client Tier is not just a browser; it acts as the entry point to a complex Application Tier.
+
+- ADF (Application Development Framework) is used for modern UI components in EBS R12.2, especially dashboards and integrations,
+  but it is not the primary framework (OAF is still dominant).
+
+- OAF (Oracle Application Framework) is the primary UI framework used in Oracle E-Business Suite.
+
+- It follows the MVC architecture, separating data (Model), UI (View), and logic (Controller).
+
+- OAF runs on the oacore managed server within WebLogic Server.
+
+- It uses components like View Objects (VO), Entity Objects (EO), and Application Modules (AM) to interact with the database.
+
+- Compared to ADF, OAF is more tightly integrated with EBS but less modern in UI design.
+
+- Most self-service pages in EBS (like iProcurement and HR) are built using OAF.
+
+- Oracle Forms are handled through the Forms Listener Servlet, which creates a dedicated runtime session per user.
+
+- The Application Tier consists of multiple layers:
+  * Oracle HTTP Server (OHS) handles incoming HTTP requests.
+  * WebLogic Server hosts Java-based services like oacore and oafm.
+  * Forms Managed Server runs Oracle Forms sessions.
+
+- Concurrent Processing is responsible for executing long-running jobs asynchronously, preventing UI blocking.
+
+- Edition-Based Redefinition (EBR) allows two versions of code (run and patch) to coexist, enabling online patching without downtime.
+
+- TNS (Transparent Network Substrate) is used for communication between Application Tier and Database.
+
+- Oracle replaced OC4J with WebLogic Server in R12.2 to improve scalability, performance, and support modern Java frameworks like ADF.
