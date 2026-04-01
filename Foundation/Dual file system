@@ -5,12 +5,34 @@ Dual file system: Run FS vs Patch FS (R12.2)
 
 Both are synchronized during Prepare phase.
 
+- Consolidated Upgrade Patch (CUP) is the core upgrade delivery mechanism that includes all required
+fixes for AD, TXK, and online patching infrastructure.
+- CUP is applied using the full ADOP cycle and relies heavily on Edition-Based Redefinition (EBR) to ensure
+zero/near-zero downtime.
+
 Online Patching Cycle:
 1. Prepare → Synchronize Patch FS with Run FS
+           → clone Run FS → Patch FS
+           → create new edition (DB level) 
+And that's what call Pre-Upgrade Patch: it prepares the existing EBS environment by updating AD/TXK codelevels and ensuring
+data dictionary readiness before upgrade.
 2. Apply → Apply patches on Patch FS
-3. Finalize → Compile and prepare system for cutover
-4. Cutover → Switch Run FS and Patch FS + switch DB edition
-5. Cleanup → Remove old editions and unused objects
+         → patch applied on Patch FS only
+         → create/modify:
+           o editioned objects
+           o PL/SQL packages
+           o synonyms
+        → run driver files:
+           o u*.drv
+        → database changes in new edition 
+3. Finalize → Compile invalid objects
+            → finalize edition changes
+            → prepare for cutover 
+4. Cutover → Switch Run FS and Patch FS 
+           → DB edition switch
+           → minimal downtime 
+5. Cleanup → Remove old editions 
+           → clean obsolete objects 
 
 Key Components:
 - Edition-Based Redefinition (EBR):
