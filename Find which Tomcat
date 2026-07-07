@@ -1,0 +1,24 @@
+Service is running on port 8080.
+Find which Tomcat instance is running it.
+
+1. Find the Java process listening on port 8080
+ss -tulpn | grep 8080
+Output:
+tcp LISTEN ... users:(("java",pid=12345,...))
+
+2. Get the Java process details
+ps -fp 12345
+or
+ps -ef | grep 12345
+
+3. Identify the Tomcat instance
+Look for one of the following JVM options:
+-Dcatalina.home=
+-Dcatalina.base=
+
+Example:
+java \
+ -Dcatalina.home=/opt/tomcat9 \
+ -Dcatalina.base=/opt/tomcat_instances/app1
+
+This tells you which Tomcat installation/instance is running.
