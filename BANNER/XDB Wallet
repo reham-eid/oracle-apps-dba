@@ -1,0 +1,38 @@
+XDB Wallet = Oracle Wallet used by Oracle XML DB Componenet.
+
+Purpose:
+- Store SSL/TLS certificates.
+- Enable HTTPS for Oracle XML DB.
+- Secure WebDAV and HTTP services.
+
+at -> $ORACLE_BASE/admin/DBNAME/xdb_wallet
+have files:
+- ewallet.p12
+- cwallet.sso
+
+Useful commands:
+
+SELECT dbms_xdb_config.gethttpport() FROM dual;
+SELECT dbms_xdb_config.gethttpsport() FROM dual;
+--if output 
+5500 -> HTTPS
+0    -> HTTP
+
+****** in BANNER ESM ******
+
+BANNER ESM
+     │
+     ▼
+Connect using HTTPS/SSL
+     │
+     ▼
+Oracle XDB
+     │
+     ▼
+Reads certificates from XDB Wallet
+     │
+     ▼
+Secure connection established
+
+
+
