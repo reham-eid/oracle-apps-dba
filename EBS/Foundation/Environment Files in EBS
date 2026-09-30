@@ -1,0 +1,13 @@
+- Environment files define the runtime configuration of Oracle EBS.
+
+- They contain environment variables such as ORACLE_HOME, APPL_TOP, and database connection details.
+
+- These files must be sourced before running any EBS commands.
+
+- There are two main types:
+  - APPSORA.env (legacy environment file)
+  - <CONTEXT_NAME>.env (AutoConfig-generated, instance-specific)
+
+- The context-based environment file is the recommended approach in modern EBS systems.
+
+- Using the wrong environment file may result in connecting to the wrong database or executing incorrect operations.
