@@ -1,0 +1,33 @@
+Inside Oracle EBS R12.2: What Do APPL_TOP, ORACLE_HOME, COMMON_TOP, and INST_TOP Really Do?
+
+-in Oracle EBS R12.2 there are 3 Layers for File System:
+ → Code (Applications Code)
+ → Technology Stack
+ → Instance-specific config
+
+==============================================================
+User Request
+   ↓
+APPL_TOP (Application Code) '/u01/.../fs1/EBSapps/appl'
+   ↓
+COMMON_TOP (Shared Resources) '/u01/.../fs1/EBSapps/comn'
+   ↓
+ORACLE_HOME (Execution Engine) '/u01/.../fs1/FMW_Home'
+   ↓
+INST_TOP (Configs + Logs '/u01/.../inst/apps/<SID>_<hostname>' 
+===============================================================
+
+- APPL_TOP contains the core application code for all EBS modules such as GL, PO, and INV.
+
+- ORACLE_HOME includes the technology stack binaries like Forms, Reports, and WebLogic components.
+
+- COMMON_TOP provides shared resources and utilities used across all application modules.
+
+- INST_TOP holds instance-specific configurations, logs, and administrative scripts.
+
+- In Oracle EBS R12.2, APPL_TOP and ORACLE_HOME exist in dual file systems (fs1 and fs2) to support online patching.
+
+- INST_TOP remains single and is not duplicated across file systems. 
+- changes per environment (Dev, Test, and Production)
+
+- These components work together to process user requests from the UI down to execution and logging.
