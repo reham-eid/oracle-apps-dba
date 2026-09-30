@@ -1,0 +1,42 @@
+ Old EBS vs New EBS
+
+Old (EBS 12.1 and below)       New (EBS 12.2+)
+---------------------------     ---------------------------
+Apache HTTP Server             Oracle HTTP Server (OHS)
+OC4J                           WebLogic Server 12c
+Oracle Forms 10g               Oracle Forms 12c
+Oracle Reports 10g             Oracle Reports 12c
+Oracle AS 10g                  Oracle Fusion Middleware 12c
+
+Category           EBS 12.1 and below                       EBS 12.2+ (new)
+--------------------------------------------------------------------------------------
+App server         OC4J (Oracle AS 10g)                     WebLogic Server 12c
+                   Discontinued, no vendor support          Enterprise-grade, fully supported by Oracle
+
+Web server         Apache HTTP Server                        Oracle HTTP Server (OHS)
+                   Standalone open-source                    Oracle-branded, tuned for EBS, bundled with FMW
+
+Patching           Offline patching only                     Online patching (ADOP)
+                   System downtime required for every patch  Patches applied while users are active — zero downtime using dual file system
+
+File system        Single file system                        Dual file system
+                   Patching locks the entire system          Run file + patch file system alternate — enables online patching
+
+Middleware         Oracle AS 10g                             Oracle Fusion Middleware 12c
+                   End of life                               Shared services, unified admin console
+
+Database support   Oracle DB 10g / 11g                       Oracle DB 12c / 19c / 21c
+                   Limited to older releases                 In-Memory, Multitenant, Advanced Compression
+
+Forms & Reports    Oracle Forms/Reports 10g                  Oracle Forms/Reports 12c
+                   Older runtime, limited browser support    Modern browser support, improved performance
+
+UI technology      Oracle Forms (fat client feel)            OA Framework + REST APIs
+                   No mobile support                          Mobile-responsive pages, REST services for integration
+
+Security           Basic SSL/TLS                              TLS 1.2 / 1.3 support
+                   Older cipher suites                         Modern cipher suites, Oracle Identity Governance integration
+
+Support status     Premier Support ended                       Premier Support active
+                   Extended support costs extra;               Certified through 2032+
+                   sustaining only
