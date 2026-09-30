@@ -1,2 +1,2 @@
 # oracle-apps-dba
-Oracle E-Business Suite R12.2 and Banner Applications — Foundation concepts and a knowledge base for aspiring Oracle Apps DBAs.
+Oracle Applications DBA — Banner & E-Business Suite Administration
